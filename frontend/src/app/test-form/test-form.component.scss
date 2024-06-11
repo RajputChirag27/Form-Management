@@ -1,0 +1,51 @@
+.form-group{
+    margin-bottom:  1rem;
+}
+
+label{
+    margin-bottom: 0.5rem;
+}
+.container {
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .test-heading{
+        color: #72b6ffce;
+    }
+  
+    .form-control {
+      background-color: #f0f0f0;
+      color: #000;
+      border-color: #ccc;
+    }
+  
+    .form-check-input {
+      background-color: #f0f0f0;
+      border-color: #ccc;
+    }
+  
+    .form-check-input:checked {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+  
+    .btn-success {
+        background-color: #72b6ffce; /* Light blue color */
+        border-color: #72b6ffce;
+    }
+    
+    .btn-success:hover {
+        background-color: #3f94f9; /* Lighter shade of blue */
+        border-color: #1e7e34; /* Keep the border color the same */
+    }
+      
+    .text-danger {
+      color: #dc3545;
+    }
+  }
+  
+  .form-container{
+    background: linear-gradient(180deg, #1a1a1a, #2b2b2b);
+  }
+  

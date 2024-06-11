@@ -1,0 +1,89 @@
+<div class="container mt-5">
+   <div class="row d-flex flex-column justify-content-center align-items-center">
+    <div class="col-lg-6 form-container p-5 rounded-4">
+        <h1 class="mb-3 test-heading">Test Form</h1>
+        <form [formGroup]="testForm" (ngSubmit)="submitForm()">
+          <div class="form-group">
+            <label for="firstname">First Name</label>
+            <input type="text" class="form-control" id="firstname" formControlName="firstname"  pattern="[a-zA-Z ]*">
+            <div class="text-danger" *ngIf="testForm.get('firstname')?.invalid && testForm.get('firstname')?.touched">
+              Please Enter Valid First Name
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <label for="lastname">Last Name</label>
+            <input type="text" class="form-control" id="lastname" formControlName="lastname">
+            <div class="text-danger" *ngIf="testForm.get('lastname')?.invalid && testForm.get('lastname')?.touched">
+              Please Enter Valid Last Name
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email">
+            <div class="text-danger" *ngIf="testForm.get('email')?.invalid && testForm.get('email')?.touched">
+              Please Enter Valid Email!
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <label>Gender</label><br>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="male" value="male" formControlName="gender">
+              <label class="form-check-label" for="male">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="female" value="female" formControlName="gender">
+              <label class="form-check-label" for="female">Female</label>
+            </div>
+            <div class="text-danger" *ngIf="testForm.get('gender')?.invalid && testForm.get('gender')?.touched">
+              Please Enter Valid Gender!
+            </div>
+          </div>
+      
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="isMarried" formControlName="isMarried">
+            <label class="form-check-label" for="isMarried">Married</label>
+          </div>
+      
+          <div class="form-group">
+            <label for="country">Country</label>
+            <select class="form-control" id="country" formControlName="country">
+              <option value="" disabled selected>Select Country</option>
+              <option *ngFor="let country of getCountries()" [value]="country">
+                {{ country }}
+              </option>
+            </select>
+            <div *ngIf="testForm.get('country')?.invalid && testForm.get('country')?.touched" class="text-danger">
+              Country is required.
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <label for="state">State</label>
+            <select class="form-control" id="state" formControlName="state" [disabled]="states.length === 0">
+              <option value="" disabled selected>Select your state</option>
+              <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+            </select>
+            <div *ngIf="testForm.get('state')?.invalid && testForm.get('state')?.touched" class="text-danger">
+              State is required.
+            </div>
+          </div>
+    
+          <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" class="form-control" name="dob" id="dob" formControlName="dob">
+            <div class="text-danger" *ngIf="testForm.get('dob')?.invalid && testForm.get('dob')?.touched">
+                Please Enter Valid Date!
+              </div>
+          </div>
+    
+    
+      
+          <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+   </div>
+  </div>
+  
