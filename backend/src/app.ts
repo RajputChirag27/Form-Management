@@ -16,7 +16,7 @@ dbConfig;
 
 
 const port = process.env.PORT || 3000
-const allowedOrigins = ['http://localhost:4200'];
+const allowedOrigins = ['http://localhost:4200', 'https://task1-angular-psi.vercel.app'];
 const corsOptions = {
   origin: (origin : any, callback : any) => {
     if (allowedOrigins.includes(origin) || !origin) {

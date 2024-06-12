@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ColDef } from 'ag-grid-community'; 
+import { ColDef, PaginationNumberFormatterParams } from 'ag-grid-community'; 
 import { FormServiceService } from '../services/form-service.service';
 
 @Component({
@@ -9,6 +9,16 @@ import { FormServiceService } from '../services/form-service.service';
 })
 export class ResultComponent {
   rowData: any[] = [];
+  public rowSelection: "single" | "multiple" = "multiple";
+  public rowGroupPanelShow: "always" | "onlyWhenGrouping" | "never" = "always";
+  public pivotPanelShow: "always" | "onlyWhenPivoting" | "never" = "always";
+  public paginationPageSize = 10;
+  public paginationPageSizeSelector: number[] | boolean = [10, 50, 100];
+  public paginationNumberFormatter: (
+    params: PaginationNumberFormatterParams,
+  ) => string = (params: PaginationNumberFormatterParams) => {
+    return "[" + params.value.toLocaleString() + "]";
+  };
   backendMessage: any;
   constructor(private formService : FormServiceService){
 
@@ -17,12 +27,11 @@ export class ResultComponent {
 
   ngOnInit() {
     this.loadUsers();
-    // If you also want to load car data, you can call loadCars() similarly
   }
 
   loadUsers() {
     this.formService.getData().subscribe((data :any) => {
-      console.log(data);
+      // console.log(data);
       this.rowData = data.message.map((user : any) => ({
         firstname: user.firstname,
         lastname: user.lastname,
@@ -39,13 +48,13 @@ export class ResultComponent {
 
   // Column Definitions: Defines the columns to be displayed.
   colDefs: ColDef[] = [
-    { field: 'firstname' },
-    { field: 'lastname' },
-    { field: 'email' },
-    { field: 'gender' },
-    { field: 'isMarried' },
-    { field: 'country' },
-    { field: 'state' },
-    { field: 'dob' }
+    { field: 'firstname', filter: 'agTextColumnFilter' },
+    { field: 'lastname', filter: 'agTextColumnFilter' },
+    { field: 'email', filter: 'agTextColumnFilter' },
+    { field: 'gender', filter: 'agTextColumnFilter' },
+    { field: 'isMarried', filter: 'agTextColumnFilter' },
+    { field: 'country', filter: 'agTextColumnFilter' },
+    { field: 'state', filter: 'agTextColumnFilter' },
+    { field: 'dob', filter: 'agDateColumnFilter' }
   ];
 }

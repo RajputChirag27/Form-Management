@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FormServiceService } from '../services/form-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-test-form',
@@ -11,7 +12,8 @@ export class TestFormComponent implements OnInit {
   testForm: FormGroup;
   states: string[] = [];
 
-  constructor(private fb: FormBuilder, private formService: FormServiceService) {
+  constructor(private fb: FormBuilder, private formService: FormServiceService, 
+    private router : Router) {
     this.testForm = this.fb.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -57,6 +59,7 @@ export class TestFormComponent implements OnInit {
         this.formService.sendData(this.testForm.value).subscribe(
           response => {
             console.log('Server response:', response);
+            this.router.navigate(['/homepage/results'])
           },
           error => {
             console.error('Error occurred:', error);
