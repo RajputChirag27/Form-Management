@@ -16,7 +16,7 @@ dbConfig;
 
 
 const port = process.env.PORT || 3000
-const allowedOrigins = ['http://localhost:4200', 'https://task1-angular-psi.vercel.app'];
+const allowedOrigins = ['http://localhost:4200', 'https://task1-angular-psi.vercel.app', 'https://6669db214b9a6505ee7a9f03--genuine-tartufo-44cb79.netlify.app'];
 const corsOptions = {
   origin: (origin : any, callback : any) => {
     if (allowedOrigins.includes(origin) || !origin) {
@@ -29,7 +29,7 @@ const corsOptions = {
 const app = express()
 app.use(cookieParser())
 app.use(express.json())
-app.use(cors(corsOptions))
+app.use(cors())
 
 
 // app.use(express.static(path.join(__dirname, '../../test/dist/test')));
