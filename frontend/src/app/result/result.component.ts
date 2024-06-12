@@ -20,6 +20,16 @@ export class ResultComponent {
     return "[" + params.value.toLocaleString() + "]";
   };
   backendMessage: any;
+  public rowSelection: "single" | "multiple" = "multiple";
+  public rowGroupPanelShow: "always" | "onlyWhenGrouping" | "never" = "always";
+  public pivotPanelShow: "always" | "onlyWhenPivoting" | "never" = "always";
+  public paginationPageSize = 500;
+  public paginationPageSizeSelector: number[] | boolean = [200, 500, 1000];
+  public paginationNumberFormatter: (
+    params: PaginationNumberFormatterParams,
+  ) => string = (params: PaginationNumberFormatterParams) => {
+    return "[" + params.value.toLocaleString() + "]";
+  };
   constructor(private formService : FormServiceService){
 
   }
