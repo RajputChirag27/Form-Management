@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ColDef } from 'ag-grid-community'; 
+import { ColDef, PaginationNumberFormatterParams } from 'ag-grid-community'; 
 import { FormServiceService } from '../services/form-service.service';
 
 @Component({
@@ -10,6 +10,16 @@ import { FormServiceService } from '../services/form-service.service';
 export class ResultComponent {
   rowData: any[] = [];
   backendMessage: any;
+  public rowSelection: "single" | "multiple" = "multiple";
+  public rowGroupPanelShow: "always" | "onlyWhenGrouping" | "never" = "always";
+  public pivotPanelShow: "always" | "onlyWhenPivoting" | "never" = "always";
+  public paginationPageSize = 500;
+  public paginationPageSizeSelector: number[] | boolean = [200, 500, 1000];
+  public paginationNumberFormatter: (
+    params: PaginationNumberFormatterParams,
+  ) => string = (params: PaginationNumberFormatterParams) => {
+    return "[" + params.value.toLocaleString() + "]";
+  };
   constructor(private formService : FormServiceService){
 
   }
@@ -39,13 +49,13 @@ export class ResultComponent {
 
   // Column Definitions: Defines the columns to be displayed.
   colDefs: ColDef[] = [
-    { field: 'firstname' },
-    { field: 'lastname' },
-    { field: 'email' },
-    { field: 'gender' },
-    { field: 'isMarried' },
-    { field: 'country' },
-    { field: 'state' },
-    { field: 'dob' }
+    { field: 'firstname', filter: 'agTextColumnFilter' },
+    { field: 'lastname', filter: 'agTextColumnFilter' },
+    { field: 'email', filter: 'agTextColumnFilter' },
+    { field: 'gender', filter: 'agTextColumnFilter' },
+    { field: 'isMarried', filter: 'agTextColumnFilter' },
+    { field: 'country', filter: 'agTextColumnFilter' },
+    { field: 'state', filter: 'agTextColumnFilter' },
+    { field: 'dob', filter: 'agDateColumnFilter' }
   ];
 }

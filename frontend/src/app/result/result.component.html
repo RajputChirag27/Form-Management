@@ -1,7 +1,14 @@
 <div class="d-flex justify-content-center align-items-center">
     <ag-grid-angular
     class="ag-theme-custom"
-    style="height: 600px; width: 90%;"
+    style="width: 90%; height: 70vh;"
+    [paginationAutoPageSize]="true"
+    [pagination]="true"
+    [rowSelection]="rowSelection"
+    [suppressRowClickSelection]="true"
+    [groupSelectsChildren]="true"
+    [paginationPageSize]="paginationPageSize"
+    [paginationPageSizeSelector]="paginationPageSizeSelector"
     [rowData]="rowData"
     [columnDefs]="colDefs">
     </ag-grid-angular>
